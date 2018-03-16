@@ -14,3 +14,9 @@ Todo
 
 1. Insert 10MM records in  5 minutes
 2. 10MM records equals  to 850 MB
+
+
+## TODO:
+
+Read big files:
+http://www.baeldung.com/java-read-lines-large-file
