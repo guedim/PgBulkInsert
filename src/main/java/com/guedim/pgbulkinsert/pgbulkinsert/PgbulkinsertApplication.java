@@ -32,7 +32,7 @@ public class PgbulkinsertApplication implements CommandLineRunner {
   public void run(String... args) throws Exception {
 
     // Bulk Actions after which the batched entities are written:
-    final int bulkSize = 10000;
+    final int bulkSize = 1000;
     // Create a new BulkProcessor:
     try (BulkProcessor<Person> bulkProcessor = new BulkProcessor<>(
         new BulkWriteHandler<>(new PersonBulkInsert(), ()->dataSource.getConnection()), bulkSize)) {

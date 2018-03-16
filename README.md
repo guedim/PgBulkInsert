@@ -8,3 +8,9 @@ Todo
 
 ## Run
 Todo
+
+
+##  Test
+
+1. Insert 10MM records in  5 minutes
+2. 10MM records equals  to 850 MB
