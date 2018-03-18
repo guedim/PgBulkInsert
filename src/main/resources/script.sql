@@ -55,7 +55,7 @@ WITH (
 	OIDS=FALSE
 ) ;
 
-ALTER TABLE referencia_pago OWNER TO pol_v4;
+ALTER TABLE pps.referencia_pago OWNER TO pol_v4;
 
 
 CREATE TABLE pps.referencia_pago_parametro_extra (
@@ -70,7 +70,7 @@ WITH (
 	OIDS=FALSE
 ) ;
 
-ALTER TABLE referencia_pago_parametro_extra OWNER TO pol_v4;
+ALTER TABLE pps.referencia_pago_parametro_extra OWNER TO pol_v4;
 
 
 CREATE TABLE pps.referencia_pago_valor_adicional (
@@ -85,4 +85,4 @@ WITH (
 	OIDS=FALSE
 ) ;
 
-ALTER TABLE referencia_pago_valor_adicional OWNER TO pol_v4;
+ALTER TABLE pps.referencia_pago_valor_adicional OWNER TO pol_v4;

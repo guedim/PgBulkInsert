@@ -1,7 +1,7 @@
 package com.guedim.pgbulkinsert.pgbulkinsert.model;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PaymentReference implements Serializable {
 
@@ -63,12 +63,12 @@ public class PaymentReference implements Serializable {
   /**
    * The creation date.
    */
-  private LocalDate creationDate;
+  private LocalDateTime creationDate;
 
   /**
    * The expiration date.
    */
-  private LocalDate expirationDate;
+  private LocalDateTime expirationDate;
 
   /**
    * If the Payment Request supports multiple payments.
@@ -98,7 +98,7 @@ public class PaymentReference implements Serializable {
   /**
    * The next sending reminder date.
    */
-  private LocalDate nextReminderDate;
+  private LocalDateTime nextReminderDate;
 
   /**
    * 
@@ -118,7 +118,7 @@ public class PaymentReference implements Serializable {
   /**
    * 
    */
-  private LocalDate associationDate;
+  private LocalDateTime associationDate;
 
 
   public Integer getId() {
@@ -170,11 +170,11 @@ public class PaymentReference implements Serializable {
     return paymentCardRequestId;
   }
 
-  public LocalDate getCreationDate() {
+  public LocalDateTime getCreationDate() {
     return creationDate == null ? null : creationDate;
   }
 
-  public LocalDate getExpirationDate() {
+  public LocalDateTime getExpirationDate() {
     return expirationDate == null ? null : expirationDate;
   }
 
@@ -210,7 +210,7 @@ public class PaymentReference implements Serializable {
     return reminderFrequency!=null?reminderFrequency.toString():null;
   }
 
-  public LocalDate getNextReminderDate() {
+  public LocalDateTime getNextReminderDate() {
     return nextReminderDate == null ? null : nextReminderDate;
   }
 
@@ -226,7 +226,7 @@ public class PaymentReference implements Serializable {
     return paymentCardsStockId;
   }
 
-  public LocalDate getAssociationDate() {
+  public LocalDateTime getAssociationDate() {
     return associationDate == null ? null : associationDate;
   }
 
@@ -270,7 +270,7 @@ public class PaymentReference implements Serializable {
     this.paymentCardRequestId = paymentCardRequestId;
   }
 
-  public void setCreationDate(LocalDate creationDate) {
+  public void setCreationDate(LocalDateTime creationDate) {
     this.creationDate = creationDate == null ? null : creationDate;
 
     if (this.creationDate != null && associationDate == null) {
@@ -278,7 +278,7 @@ public class PaymentReference implements Serializable {
     }
   }
 
-  public void setExpirationDate(LocalDate expirationDate) {
+  public void setExpirationDate(LocalDateTime expirationDate) {
     this.expirationDate = expirationDate == null ? null : expirationDate;
   }
 
@@ -303,7 +303,7 @@ public class PaymentReference implements Serializable {
     this.reminderFrequency = reminderFrequency;
   }
 
-  public void setNextReminderDate(LocalDate nextReminderDate) {
+  public void setNextReminderDate(LocalDateTime nextReminderDate) {
     this.nextReminderDate = nextReminderDate == null ? null : nextReminderDate;
   }
 
@@ -319,7 +319,7 @@ public class PaymentReference implements Serializable {
     this.paymentCardsStockId = paymentCardsStockId;
   }
 
-  public void setAssociationDate(LocalDate associationDate) {
+  public void setAssociationDate(LocalDateTime associationDate) {
     this.associationDate = associationDate == null ? null : associationDate;
   }
 

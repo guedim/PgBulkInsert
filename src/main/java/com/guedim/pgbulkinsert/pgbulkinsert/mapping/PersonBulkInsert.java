@@ -7,7 +7,7 @@ import de.bytefish.pgbulkinsert.PgBulkInsert;
 public class PersonBulkInsert extends PgBulkInsert<Person> {
 
   public PersonBulkInsert() {
-    super("public", "person_example");
+    super("pps", "person_example");
 
     mapString("first_name", Person::getFirstName);
     mapString("last_name", Person::getLastName);

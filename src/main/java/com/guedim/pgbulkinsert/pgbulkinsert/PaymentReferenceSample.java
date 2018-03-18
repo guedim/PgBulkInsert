@@ -1,6 +1,6 @@
 package com.guedim.pgbulkinsert.pgbulkinsert;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +19,27 @@ public final class PaymentReferenceSample {
       PaymentReference p = new PaymentReference();
 
       p.setId(pos);
+      //p.setMerchantId(pos);
+      //p.setAccountId(pos);
       p.setPaymentReferenceCode("reference code");
       p.setPaymentReferenceType(PaymentReferenceType.PAYMENT_CARD);
       p.setDescription("description");
       p.setPaymentReferenceState(PaymentReferenceState.ENABLED);
-      p.setCreationDate(LocalDate.now());
+      //p.setPayerName("payer name");
+      //p.setPayerEmail("payer email");
+      //p.setPaymentCardRequestId("solicitud tarjeta id");
+      p.setCreationDate(LocalDateTime.now());
+      //p.setExpirationDate(LocalDate.now());
       p.setMultiPayment(Boolean.TRUE);
       p.setLease(0l);
       p.setChargeSolutionBusinessUnit(ChargeSolutionBusinessUnit.ORDERS);
       p.setPaymentReferenceCreationType(PaymentReferenceCreationType.CARD);
-      p.setAssociationDate(LocalDate.now());
+      //p.setReminderFrequency(ReminderFrequency.BIMONTHLY);
+      //p.setNextReminderDate(LocalDate.now());
+      //p.setReference("referencia");
+      //p.setMigrated(Boolean.TRUE);
+      //p.setPaymentCardsStockId("stock id");
+      p.setAssociationDate(LocalDateTime.now());
       references.add(p);
     }
 

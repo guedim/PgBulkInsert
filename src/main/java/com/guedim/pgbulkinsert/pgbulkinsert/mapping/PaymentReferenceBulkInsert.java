@@ -20,17 +20,17 @@ public class PaymentReferenceBulkInsert extends PgBulkInsert<PaymentReference> {
     mapString("pagador_nombre", PaymentReference::getPayerName);
     mapString("pagador_email", PaymentReference::getPayerEmail);
     mapString("solicitud_tarjeta_id", PaymentReference::getPaymentCardRequestId);
-    mapDate("fecha_creacion", PaymentReference::getCreationDate);
-    mapDate("fecha_vencimiento", PaymentReference::getExpirationDate);
+    mapTimeStamp("fecha_creacion", PaymentReference::getCreationDate);
+    mapTimeStamp("fecha_vencimiento", PaymentReference::getExpirationDate);
     mapBoolean("multipago", PaymentReference::getMultiPayment);
     mapLong("lease", PaymentReference::getLease);
     mapString("unidad_negocio", PaymentReference::getChargeSolutionBusinessUnitAsString);
     mapString("tipo_creacion", PaymentReference::getPaymentReferenceCreationTypeAsString);
     mapString("frecuencia_recordatorio", PaymentReference::getReminderFrequencyAsString);
-    mapDate("fecha_proximo_recordatorio", PaymentReference::getNextReminderDate);
+    mapTimeStamp("fecha_proximo_recordatorio", PaymentReference::getNextReminderDate);
     mapString("referencia", PaymentReference::getReference);
     mapBoolean("migrado", PaymentReference::getMigrated);
     mapString("inventario_tarjeta_cobranza_id", PaymentReference::getPaymentCardsStockId);
-    mapDate("fecha_asociacion", PaymentReference::getAssociationDate);
+    mapTimeStamp("fecha_asociacion", PaymentReference::getAssociationDate);
   }
 }
