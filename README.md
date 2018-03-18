@@ -15,10 +15,7 @@ $ mvn package
 
 ## Run
 
-Run the project. 
->
-> It is Mandatory to set the file name to read
->
+Run the project. It is Mandatory to set the file name to read
 
 ```sh
 $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/file/name/to/import/in/postgres"
@@ -27,13 +24,19 @@ $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/file/name/to/import/in/post
 >
 > The PaymentReference, PaymentReferenceAdditionalValue and PaymentReferenceExtraParameter have foreign keys  :(
 > It is mandatory import the entities in the following order:
-> java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference.txt"
-> java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_additional_values.txt"
-> java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_extra_parameters.txt"
 >
-
-
-Todo
+- Import data into PaymentReference entity
+```sh
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference.txt"
+```
+- Import data into PaymentReferenceAdditionalValue entity
+```sh
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_additional_values.txt"
+```
+- Import data into PaymentReferenceExtraParameter entity
+```sh
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_extra_parameters.txt"
+```
 
 ##  Test
 
