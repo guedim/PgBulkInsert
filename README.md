@@ -4,11 +4,36 @@ Project base on [PgBulkInsert tool](https://github.com/bytefish/PgBulkInsert).
 More information in [PgBulkInsert bulk processor](https://bytefish.de/blog/pgbulkinsert_bulkprocessor/)
 
 ## Build
-Todo
+- Download the [Project](https://github.com/guedim/PgBulkInsert) 
+```sh
+$git clone https://github.com/guedim/PgBulkInsert
+```
+- package it
+```sh
+$ mvn package
+```
 
 ## Run
-Todo
 
+Run the project. 
+>
+> It is Mandatory to set the file name to read
+>
+
+```sh
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/file/name/to/import/in/postgres"
+```
+
+>
+> The PaymentReference, PaymentReferenceAdditionalValue and PaymentReferenceExtraParameter have foreign keys  :(
+> It is mandatory import the entities in the following order:
+> java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference.txt"
+> java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_additional_values.txt"
+> java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_extra_parameters.txt"
+>
+
+
+Todo
 
 ##  Test
 
