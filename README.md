@@ -18,5 +18,10 @@ Todo
 
 ## TODO:
 
+Flag for selecting the table to writte:
+- PaymentReference
+- ExtraParameter
+- AdditionalValue
+
 Read big files:
 http://www.baeldung.com/java-read-lines-large-file
