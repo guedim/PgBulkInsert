@@ -2,28 +2,27 @@ package com.guedim.pgbulkinsert.pgbulkinsert;
 
 import static java.lang.System.exit;
 
-import java.util.List;
+import java.io.File;
 
-import javax.sql.DataSource;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.guedim.pgbulkinsert.pgbulkinsert.mapping.PaymentReferenceBulkInsert;
-import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReference;
-
-import de.bytefish.pgbulkinsert.pgsql.processor.BulkProcessor;
-import de.bytefish.pgbulkinsert.pgsql.processor.handler.BulkWriteHandler;
-
 
 @SpringBootApplication
 public class PgbulkinsertApplication implements CommandLineRunner {
-
+  
+  private static final Logger logger = LoggerFactory.getLogger(PgbulkinsertApplication.class);    
+  
+  private EntityToImport entity;
+  private File file;
+  
   @Autowired
-  DataSource dataSource;
-
+  private InsertService insertService;
+  
   public static void main(String[] args) {
     SpringApplication.run(PgbulkinsertApplication.class, args);
   }
@@ -31,18 +30,43 @@ public class PgbulkinsertApplication implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
-    // Bulk Actions after which the batched entities are written:
-    final int bulkSize = 1;
-    // Create a new BulkProcessor:
-    try (BulkProcessor<PaymentReference> bulkProcessor = new BulkProcessor<>(
-        new BulkWriteHandler<>(new PaymentReferenceBulkInsert(), ()->dataSource.getConnection()), bulkSize)) {
-      // Create some Test data:
-      List<PaymentReference> values = PaymentReferenceSample.getPaymentReferenceList(1000); 
-      // Now process them with the BulkProcessor:
-      for (PaymentReference pr : values) {
-        bulkProcessor.add(pr);
-      }
-    }
+    logger.info("Application started with arguments:" + args);
+
+    if (!isValidArgs(args)) {
+      logger.error("**************************************************************************************************************************");
+      logger.error("java -jar pgbulkinsert-0.0.1-SNAPSHOT.jar  {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE}  {'filename'}");
+      logger.error("    PAYMENT_REFERENCE: Set to import the data into PaymentReference entity.");
+      logger.error("    EXTRA_PARAMETER: Set to import the data into PaymentReference Extra Parameter entity.");
+      logger.error("    ADDITIONAL_VALUE: Set to import the data into PaymentReference Additional values entity.");
+      logger.error("    'filename': The absolute path name of the input file.");
+      logger.error("**************************************************************************************************************************");
+      exit(1);
+    } 
+
+    
+    logger.info("Starting processing...");
+    InsertService service =  insertService.getInsertService(entity);
+    service.importData();
     exit(0);
   }
+  
+  private boolean isValidArgs(String... args) {
+    if (args == null || args.length != 2) {
+      logger.error("Error in parameter values. Please provide just 2 parameter: {TABLE} and {FILE_NAME} !!!");
+      return false;
+    }
+    
+    try {
+      entity =  EntityToImport.valueOf(args[0].trim());
+    } catch (Exception e) {
+      logger.error("First parameter is not Valid: {"+ args[0]+ "}.  Please use: {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE} ");
+      return false;
+    }
+    file = new File(args[1].trim());
+    if(!file.exists() || file.isDirectory()) { 
+      logger.error("The file name is not valid.");
+      return false;
+    } 
+    return true;
+  }   
 }

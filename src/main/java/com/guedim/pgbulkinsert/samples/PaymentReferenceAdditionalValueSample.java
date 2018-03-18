@@ -1,4 +1,4 @@
-package com.guedim.pgbulkinsert.pgbulkinsert;
+package com.guedim.pgbulkinsert.samples;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
