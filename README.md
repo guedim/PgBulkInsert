@@ -6,7 +6,7 @@ More information in [PgBulkInsert bulk processor](https://bytefish.de/blog/pgbul
 ## Build
 - Download the [Project](https://github.com/guedim/PgBulkInsert) 
 ```sh
-$git clone https://github.com/guedim/PgBulkInsert
+$ git clone https://github.com/guedim/PgBulkInsert
 ```
 - package it
 ```sh
@@ -22,7 +22,7 @@ $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/file/name/to/import/in/post
 ```
 
 >
-> The PaymentReference, PaymentReferenceAdditionalValue and PaymentReferenceExtraParameter have foreign keys  :(
+> The PaymentReference, PaymentReferenceAdditionalValue and PaymentReferenceExtraParameter have foreign keys.
 > It is mandatory import the entities in the following order:
 >
 - Import data into PaymentReference entity
