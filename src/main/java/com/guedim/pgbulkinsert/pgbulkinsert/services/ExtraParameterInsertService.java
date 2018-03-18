@@ -1,4 +1,4 @@
-package com.guedim.pgbulkinsert.pgbulkinsert;
+package com.guedim.pgbulkinsert.pgbulkinsert.services;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import de.bytefish.pgbulkinsert.pgsql.processor.BulkProcessor;
 import de.bytefish.pgbulkinsert.pgsql.processor.handler.BulkWriteHandler;
 
 @Component
-public class ExtraParameterInsert extends InsertService {
+public class ExtraParameterInsertService extends InsertService {
 
   public void importData() throws Exception {
     // Create a new BulkProcessor:

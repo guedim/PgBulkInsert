@@ -11,6 +11,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.guedim.pgbulkinsert.pgbulkinsert.services.InsertService;
+
 
 @SpringBootApplication
 public class PgbulkinsertApplication implements CommandLineRunner {
@@ -47,6 +49,7 @@ public class PgbulkinsertApplication implements CommandLineRunner {
     logger.info("Starting processing...");
     InsertService service =  insertService.getInsertService(entity);
     service.importData();
+    logger.info("Completed processing...");
     exit(0);
   }
   
