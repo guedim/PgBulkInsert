@@ -15,7 +15,13 @@ $ mvn package
 
 ## Run
 
-Run the project. It is Mandatory to set the entity and file name to read
+Run the project. It is Mandatory to set the entity and file name to read.
+
+- **entity**: The entity name to import data. The valid values are:
+	- **PAYMENT_REFERENCE**: Set to import the data into PaymentReference entity
+	- **EXTRA_PARAMETER**: Set to import the data into PaymentReference Extra Parameter entity.
+	- **ADDITIONAL_VALUE**: Set to import the data into PaymentReference Additional values entity.
+- **'filename'**: The absolute path name of the input file.
 
 ```sh
 $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE}  {'filename'}");
@@ -29,13 +35,14 @@ $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar {PAYMENT_REFERENCE | EXTRA_PA
 ```sh
 $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar PAYMENT_REFERENCE "/location/to/files/payment_reference.txt"
 ```
-- Import data into PaymentReferenceAdditionalValue entity
-```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar ADDITIONAL_VALUE "/location/to/files/payment_reference_additional_values.txt"
-```
 - Import data into PaymentReferenceExtraParameter entity
 ```sh
 $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar EXTRA_PARAMETER "/location/to/files/payment_reference_extra_parameters.txt"
+```
+
+- Import data into PaymentReferenceAdditionalValue entity
+```sh
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar ADDITIONAL_VALUE "/location/to/files/payment_reference_additional_values.txt"
 ```
 
 ##  Test
