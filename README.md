@@ -15,10 +15,10 @@ $ mvn package
 
 ## Run
 
-Run the project. It is Mandatory to set the file name to read
+Run the project. It is Mandatory to set the entity and file name to read
 
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/file/name/to/import/in/postgres"
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE}  {'filename'}");
 ```
 
 >
@@ -27,15 +27,15 @@ $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/file/name/to/import/in/post
 >
 - Import data into PaymentReference entity
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference.txt"
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar PAYMENT_REFERENCE "/location/to/files/payment_reference.txt"
 ```
 - Import data into PaymentReferenceAdditionalValue entity
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_additional_values.txt"
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar ADDITIONAL_VALUE "/location/to/files/payment_reference_additional_values.txt"
 ```
 - Import data into PaymentReferenceExtraParameter entity
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar "/location/to/files/payment_reference_extra_parameters.txt"
+$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar EXTRA_PARAMETER "/location/to/files/payment_reference_extra_parameters.txt"
 ```
 
 ##  Test
