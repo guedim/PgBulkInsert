@@ -19,6 +19,10 @@ public class PaymentReferenceAdditionalValue {
   public PaymentReferenceCurrency getCurrency() {
     return currency;
   }
+  
+  public String getCurrencyAsString() {
+    return currency!=null?currency.toString():null;
+  }
 
   public BigDecimal getValue() {
     return value;
@@ -26,6 +30,10 @@ public class PaymentReferenceAdditionalValue {
 
   public PaymentReferenceAddicionalValueName getName() {
     return name;
+  }
+  
+  public String getNameAsString() {
+    return name!=null?name.toString():null;
   }
 
   public void setId(Integer id) {

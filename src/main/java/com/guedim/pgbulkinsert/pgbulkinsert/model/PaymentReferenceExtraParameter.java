@@ -33,6 +33,10 @@ public class PaymentReferenceExtraParameter implements Serializable{
     return name;
   }
 
+  public String getNameAsString() {
+    return name!=null?name.toString():null;
+  }
+  
   public void setId(Integer id) {
     this.id = id;
   }

@@ -1,7 +1,7 @@
 package com.guedim.pgbulkinsert.pgbulkinsert.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PaymentReference implements Serializable {
 
@@ -63,12 +63,12 @@ public class PaymentReference implements Serializable {
   /**
    * The creation date.
    */
-  private Date creationDate;
+  private LocalDate creationDate;
 
   /**
    * The expiration date.
    */
-  private Date expirationDate;
+  private LocalDate expirationDate;
 
   /**
    * If the Payment Request supports multiple payments.
@@ -98,7 +98,7 @@ public class PaymentReference implements Serializable {
   /**
    * The next sending reminder date.
    */
-  private Date nextReminderDate;
+  private LocalDate nextReminderDate;
 
   /**
    * 
@@ -118,7 +118,7 @@ public class PaymentReference implements Serializable {
   /**
    * 
    */
-  private Date associationDate;
+  private LocalDate associationDate;
 
 
   public Integer getId() {
@@ -140,6 +140,11 @@ public class PaymentReference implements Serializable {
   public PaymentReferenceType getPaymentReferenceType() {
     return paymentReferenceType;
   }
+  
+  public String getPaymentReferenceTypeAsString() {
+    return paymentReferenceType!=null?paymentReferenceType.toString():null;
+  }
+  
 
   public String getDescription() {
     return description;
@@ -147,6 +152,10 @@ public class PaymentReference implements Serializable {
 
   public PaymentReferenceState getPaymentReferenceState() {
     return paymentReferenceState;
+  }
+  
+  public String getPaymentReferenceStateAsString() {
+    return paymentReferenceState!=null?paymentReferenceState.toString():null;
   }
 
   public String getPayerName() {
@@ -161,12 +170,12 @@ public class PaymentReference implements Serializable {
     return paymentCardRequestId;
   }
 
-  public Date getCreationDate() {
-    return creationDate == null ? null : new Date(creationDate.getTime());
+  public LocalDate getCreationDate() {
+    return creationDate == null ? null : creationDate;
   }
 
-  public Date getExpirationDate() {
-    return expirationDate == null ? null : new Date(expirationDate.getTime());
+  public LocalDate getExpirationDate() {
+    return expirationDate == null ? null : expirationDate;
   }
 
   public Boolean getMultiPayment() {
@@ -180,17 +189,29 @@ public class PaymentReference implements Serializable {
   public ChargeSolutionBusinessUnit getChargeSolutionBusinessUnit() {
     return chargeSolutionBusinessUnit;
   }
+  
+  public String getChargeSolutionBusinessUnitAsString() {
+    return chargeSolutionBusinessUnit!=null?chargeSolutionBusinessUnit.toString():null;
+  }
 
   public PaymentReferenceCreationType getPaymentReferenceCreationType() {
     return paymentReferenceCreationType;
   }
 
+  public String getPaymentReferenceCreationTypeAsString() {
+    return paymentReferenceCreationType!=null?paymentReferenceCreationType.toString():PaymentReferenceCreationType.EMAIL.toString();
+  }
+  
   public ReminderFrequency getReminderFrequency() {
     return reminderFrequency;
   }
+  
+  public String getReminderFrequencyAsString() {
+    return reminderFrequency!=null?reminderFrequency.toString():null;
+  }
 
-  public Date getNextReminderDate() {
-    return nextReminderDate == null ? null : new Date(nextReminderDate.getTime());
+  public LocalDate getNextReminderDate() {
+    return nextReminderDate == null ? null : nextReminderDate;
   }
 
   public String getReference() {
@@ -205,8 +226,8 @@ public class PaymentReference implements Serializable {
     return paymentCardsStockId;
   }
 
-  public Date getAssociationDate() {
-    return associationDate == null ? null : new Date(associationDate.getTime());
+  public LocalDate getAssociationDate() {
+    return associationDate == null ? null : associationDate;
   }
 
   public void setId(Integer id) {
@@ -249,16 +270,16 @@ public class PaymentReference implements Serializable {
     this.paymentCardRequestId = paymentCardRequestId;
   }
 
-  public void setCreationDate(Date creationDate) {
-    this.creationDate = creationDate == null ? null : new Date(creationDate.getTime());
+  public void setCreationDate(LocalDate creationDate) {
+    this.creationDate = creationDate == null ? null : creationDate;
 
     if (this.creationDate != null && associationDate == null) {
-      associationDate = new Date(this.creationDate.getTime());
+      associationDate = this.creationDate;
     }
   }
 
-  public void setExpirationDate(Date expirationDate) {
-    this.expirationDate = expirationDate == null ? null : new Date(expirationDate.getTime());
+  public void setExpirationDate(LocalDate expirationDate) {
+    this.expirationDate = expirationDate == null ? null : expirationDate;
   }
 
   public void setMultiPayment(Boolean multiPayment) {
@@ -282,8 +303,8 @@ public class PaymentReference implements Serializable {
     this.reminderFrequency = reminderFrequency;
   }
 
-  public void setNextReminderDate(Date nextReminderDate) {
-    this.nextReminderDate = nextReminderDate == null ? null : new Date(nextReminderDate.getTime());
+  public void setNextReminderDate(LocalDate nextReminderDate) {
+    this.nextReminderDate = nextReminderDate == null ? null : nextReminderDate;
   }
 
   public void setReference(String reference) {
@@ -298,8 +319,8 @@ public class PaymentReference implements Serializable {
     this.paymentCardsStockId = paymentCardsStockId;
   }
 
-  public void setAssociationDate(Date associationDate) {
-    this.associationDate = associationDate == null ? null : new Date(associationDate.getTime());
+  public void setAssociationDate(LocalDate associationDate) {
+    this.associationDate = associationDate == null ? null : associationDate;
   }
 
 }
