@@ -1,5 +1,7 @@
 package com.guedim.pgbulkinsert.pgbulkinsert.services;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.guedim.pgbulkinsert.pgbulkinsert.EntityToImport;
+import com.guedim.pgbulkinsert.pgbulkinsert.model.BaseEntity;
 
 @Component
 public class InsertService {
@@ -21,7 +24,7 @@ public class InsertService {
   @Autowired
   ApplicationContext applicationContext;
 
-  public void importData() throws Exception {};
+  public void importData(List<BaseEntity> data) throws Exception {};
 
 
   public InsertService getInsertService(EntityToImport entity) {

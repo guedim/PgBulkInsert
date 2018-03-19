@@ -3,6 +3,7 @@ package com.guedim.pgbulkinsert.pgbulkinsert;
 import static java.lang.System.exit;
 
 import java.io.File;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.guedim.pgbulkinsert.file.FileCellProcessor;
+import com.guedim.pgbulkinsert.pgbulkinsert.model.BaseEntity;
 import com.guedim.pgbulkinsert.pgbulkinsert.services.InsertService;
 
 
@@ -47,15 +49,15 @@ public class PgbulkinsertApplication implements CommandLineRunner {
     } 
 
     
-    logger.info("Starting processing...");
-    
+    logger.info("Starting processing file...");
     FileCellProcessor fileProcessor = FileCellProcessor.getFileCellProcessor(entity);
-    fileProcessor.readWithCsvBeanReader(file.getAbsolutePath());
-    /*
+    List<BaseEntity> data = fileProcessor.readWithCsvBeanReader(file.getAbsolutePath());
+    
+    logger.info("Starting copy data into database...");
     InsertService service =  insertService.getInsertService(entity);
-    service.importData();
+    service.importData(data);
+    
     logger.info("Completed processing...");
-    */
     exit(0);
   }
   
