@@ -3,7 +3,7 @@ package com.guedim.pgbulkinsert.pgbulkinsert.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class PaymentReference implements Serializable {
+public class PaymentReference extends BaseEntity implements Serializable {
 
   /**
    * Generated serial version UID.

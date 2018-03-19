@@ -2,7 +2,7 @@ package com.guedim.pgbulkinsert.pgbulkinsert.model;
 
 import java.io.Serializable;
 
-public class PaymentReferenceExtraParameter implements Serializable{
+public class PaymentReferenceExtraParameter extends BaseEntity implements Serializable{
 
   /**
    * Generated serial version UID.

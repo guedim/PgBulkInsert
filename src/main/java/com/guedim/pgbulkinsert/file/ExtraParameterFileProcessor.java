@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.supercsv.cellprocessor.Optional;
-import org.supercsv.cellprocessor.ParseEnum;
 import org.supercsv.cellprocessor.ParseInt;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -13,20 +12,14 @@ import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
+import com.guedim.pgbulkinsert.pgbulkinsert.model.BaseEntity;
 import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceExtraParameter;
-import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceExtraParameterName;
 
-public final class PaymentReferenceCellProcessor {
+public final class ExtraParameterFileProcessor extends FileCellProcessor {
   
-  public static void main(String[] args) throws Exception {
-    
-    readWithCsvBeanReader("C:\\Users\\SONY\\Downloads\\cupones\\cupones_parametro_extra.csv");
-    
-  }
-  
-  private static List<PaymentReferenceExtraParameter>  readWithCsvBeanReader(String file) throws Exception {
+  public List<BaseEntity>  readWithCsvBeanReader(String file) throws Exception {
 
-    List<PaymentReferenceExtraParameter> extraParameterList = null;
+    List<BaseEntity> extraParameterList = null;
     ICsvBeanReader beanReader = null;
     try {
       beanReader = new CsvBeanReader(new FileReader(file), CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
@@ -39,8 +32,8 @@ public final class PaymentReferenceCellProcessor {
       
       PaymentReferenceExtraParameter extraParameter;
       while ((extraParameter = beanReader.read(PaymentReferenceExtraParameter.class, header, processors)) != null) {
-          System.out.println(String.format("lineNo=%s, rowNo=%s, customer=%s", beanReader.getLineNumber(), beanReader.getRowNumber(), extraParameter));
-          extraParameterList.add(extraParameter);
+        log(beanReader);  
+        extraParameterList.add(extraParameter);
       }
 
     } finally {
@@ -62,7 +55,7 @@ public final class PaymentReferenceCellProcessor {
         new NotNull(new RemoveDotsCellProcessor(new ParseInt())),               // referencia_pago_id (must be unique)
         new Optional(new RemoveDotsCellProcessor()),                            // tipo
         new NotNull(),                                                          // valor
-        new NotNull(new ParseEnum(PaymentReferenceExtraParameterName.class))    // nombbre
+        new ExtraParameternameCellProcessor()                                   // nombbre
     };
     return processors;
   }

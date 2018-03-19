@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.guedim.pgbulkinsert.file.FileCellProcessor;
 import com.guedim.pgbulkinsert.pgbulkinsert.services.InsertService;
 
 
@@ -47,9 +48,14 @@ public class PgbulkinsertApplication implements CommandLineRunner {
 
     
     logger.info("Starting processing...");
+    
+    FileCellProcessor fileProcessor = FileCellProcessor.getFileCellProcessor(entity);
+    fileProcessor.readWithCsvBeanReader(file.getAbsolutePath());
+    /*
     InsertService service =  insertService.getInsertService(entity);
     service.importData();
     logger.info("Completed processing...");
+    */
     exit(0);
   }
   

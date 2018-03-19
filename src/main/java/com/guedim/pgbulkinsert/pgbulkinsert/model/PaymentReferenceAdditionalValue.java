@@ -1,9 +1,15 @@
 package com.guedim.pgbulkinsert.pgbulkinsert.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class PaymentReferenceAdditionalValue {
+public class PaymentReferenceAdditionalValue extends BaseEntity implements Serializable {
   
+  /**
+   * 
+   */
+  private static final long serialVersionUID = 1L;
+
   private Integer id;
   
   private PaymentReferenceCurrency currency;

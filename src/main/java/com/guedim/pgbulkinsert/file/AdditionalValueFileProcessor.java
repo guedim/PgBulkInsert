@@ -13,21 +13,17 @@ import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
+import com.guedim.pgbulkinsert.pgbulkinsert.model.BaseEntity;
 import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceAddicionalValueName;
 import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceAdditionalValue;
 import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceCurrency;
 
-public final class AdditionalValueCellProcessor {
+public final class AdditionalValueFileProcessor extends FileCellProcessor {
   
-  public static void main(String[] args) throws Exception {
-    
-    readWithCsvBeanReader("C:\\Users\\SONY\\Downloads\\cupones\\cupones_valor_adicional.csv");
-    
-  }
-  
-  private static List<PaymentReferenceAdditionalValue> readWithCsvBeanReader(String file) throws Exception {
+  @Override
+  public List<BaseEntity> readWithCsvBeanReader(String file) throws Exception {
 
-    List<PaymentReferenceAdditionalValue> additionalValueList = null;
+    List<BaseEntity> additionalValueList = null;
     ICsvBeanReader beanReader = null;
     try {
       beanReader = new CsvBeanReader(new FileReader(file), CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
@@ -40,8 +36,8 @@ public final class AdditionalValueCellProcessor {
       
       PaymentReferenceAdditionalValue additionalValue;
       while ((additionalValue = beanReader.read(PaymentReferenceAdditionalValue.class, header, processors)) != null) {
-          System.out.println(String.format("lineNo=%s, rowNo=%s, customer=%s", beanReader.getLineNumber(), beanReader.getRowNumber(), additionalValue));
-          additionalValueList.add(additionalValue);
+        log(beanReader);  
+        additionalValueList.add(additionalValue);
       }
 
     } finally {

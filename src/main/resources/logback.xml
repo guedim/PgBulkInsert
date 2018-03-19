@@ -11,16 +11,16 @@
 		</layout>
 	</appender>
 
-	<logger name="org.springframework.jdbc" level="error"
+	<logger name="org.springframework.jdbc" level="info"
 		additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<logger name="com.mkyong" level="error" additivity="false">
+	<logger name="com.guedim.pgbulkinsert" level="info" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<root level="error">
+	<root level="info">
 		<appender-ref ref="STDOUT" />
 	</root>
 
