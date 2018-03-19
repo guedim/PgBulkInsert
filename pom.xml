@@ -5,7 +5,7 @@
 
 	<groupId>com.guedim.pgbulkinsert</groupId>
 	<artifactId>pgbulkinsert</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>pgbulkinsert</name>
@@ -48,10 +48,17 @@
 			<artifactId>HikariCP</artifactId>
 		</dependency>
 
+		<!-- PgBuklinsert: apply copy into postgres -->
 		<dependency>
 			<groupId>de.bytefish</groupId>
 			<artifactId>pgbulkinsert</artifactId>
 			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sf.supercsv</groupId>
+			<artifactId>super-csv-java8</artifactId>
+			<version>2.4.0</version>
 		</dependency>
 
 	</dependencies>
