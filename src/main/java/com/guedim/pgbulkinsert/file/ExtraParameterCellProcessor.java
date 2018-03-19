@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.supercsv.cellprocessor.Optional;
-import org.supercsv.cellprocessor.ParseEnum;
 import org.supercsv.cellprocessor.ParseInt;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -14,9 +13,8 @@ import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
 
 import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceExtraParameter;
-import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceExtraParameterName;
 
-public final class PaymentReferenceCellProcessor {
+public final class ExtraParameterCellProcessor {
   
   public static void main(String[] args) throws Exception {
     
@@ -61,8 +59,8 @@ public final class PaymentReferenceCellProcessor {
     final CellProcessor[] processors = new CellProcessor[] {
         new NotNull(new RemoveDotsCellProcessor(new ParseInt())),               // referencia_pago_id (must be unique)
         new Optional(new RemoveDotsCellProcessor()),                            // tipo
-        new NotNull(),                                                          // valor
-        new NotNull(new ParseEnum(PaymentReferenceExtraParameterName.class))    // nombbre
+        new Optional(),                                                          // valor
+        new ExtraParameternameCellProcessor()                                   // nombbre
     };
     return processors;
   }
