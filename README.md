@@ -24,7 +24,7 @@ Run the project. It is Mandatory to set the entity and file name to read.
 - **'filename'**: The absolute path name of the input file.
 
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE}  {'filename'}");
+$ java -Dfile.encoding=UTF-8 -jar target/pgbulkinsert-1.0.0.jar {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE}  {'filename'}");
 ```
 
 >
@@ -33,16 +33,16 @@ $ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar {PAYMENT_REFERENCE | EXTRA_PA
 >
 - Import data into PaymentReference entity
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar PAYMENT_REFERENCE "/location/to/files/payment_reference.txt"
+$ java -Dfile.encoding=UTF-8 -jar target/pgbulkinsert-1.0.0.jar PAYMENT_REFERENCE "/location/to/files/payment_reference.txt"
 ```
 - Import data into PaymentReferenceExtraParameter entity
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar EXTRA_PARAMETER "/location/to/files/payment_reference_extra_parameters.txt"
+$ java -Dfile.encoding=UTF-8 -jar target/pgbulkinsert-1.0.0.jar EXTRA_PARAMETER "/location/to/files/payment_reference_extra_parameters.txt"
 ```
 
 - Import data into PaymentReferenceAdditionalValue entity
 ```sh
-$ java -jar target/pgbulkinsert-0.0.1-SNAPSHOT.jar ADDITIONAL_VALUE "/location/to/files/payment_reference_additional_values.txt"
+$ java -Dfile.encoding=UTF-8 -jar target/pgbulkinsert-1.0.0.jar ADDITIONAL_VALUE "/location/to/files/payment_reference_additional_values.txt"
 ```
 
 ##  Test
