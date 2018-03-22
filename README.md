@@ -53,10 +53,9 @@ $ java -Dfile.encoding=UTF-8 -jar target/pgbulkinsert-1.0.0.jar ADDITIONAL_VALUE
 
 ## TODO:
 
-Flag for selecting the table to writte:
-- PaymentReference
-- ExtraParameter
-- AdditionalValue
+Set the database user, pass and url by command line
+
+java -Xms8g -Xmx8g -Dfile.encoding=UTF-8 -jar target/pgbulkinsert-1.0.0.jar PAYMENT_REFERENCE "C:\Users\SONY\Downloads\prueba-2018-03-22\referencia_pago_3_4.csv"
 
 Read big files:
 http://www.baeldung.com/java-read-lines-large-file
