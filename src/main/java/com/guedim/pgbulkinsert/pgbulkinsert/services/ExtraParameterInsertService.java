@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import com.guedim.pgbulkinsert.pgbulkinsert.mapping.PaymentReferenceExtraParameterBulkInsert;
 import com.guedim.pgbulkinsert.pgbulkinsert.model.BaseEntity;
 import com.guedim.pgbulkinsert.pgbulkinsert.model.PaymentReferenceExtraParameter;
-import com.guedim.pgbulkinsert.samples.PaymentReferenceExtraParameterSample;
 
 import de.bytefish.pgbulkinsert.pgsql.processor.BulkProcessor;
 import de.bytefish.pgbulkinsert.pgsql.processor.handler.BulkWriteHandler;

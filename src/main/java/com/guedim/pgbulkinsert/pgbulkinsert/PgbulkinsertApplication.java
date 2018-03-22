@@ -39,7 +39,7 @@ public class PgbulkinsertApplication implements CommandLineRunner {
 
     if (!isValidArgs(args)) {
       logger.error("**************************************************************************************************************************");
-      logger.error("java -jar pgbulkinsert-0.0.1-SNAPSHOT.jar  {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE}  {'filename'}");
+      logger.error("java -jar pgbulkinsert-1.0.0.jar  {PAYMENT_REFERENCE | EXTRA_PARAMETER | ADDITIONAL_VALUE}  {'filename'}");
       logger.error("    PAYMENT_REFERENCE: Set to import the data into PaymentReference entity.");
       logger.error("    EXTRA_PARAMETER: Set to import the data into PaymentReference Extra Parameter entity.");
       logger.error("    ADDITIONAL_VALUE: Set to import the data into PaymentReference Additional values entity.");

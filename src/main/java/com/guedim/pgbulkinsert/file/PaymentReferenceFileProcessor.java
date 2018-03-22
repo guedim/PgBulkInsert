@@ -66,7 +66,7 @@ public final class PaymentReferenceFileProcessor extends FileCellProcessor {
 
   private static CellProcessor[] getProcessors() {
 
-    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         
         final CellProcessor[] processors = new CellProcessor[] {
             new NotNull(new RemoveDotsCellProcessor(new ParseInt())),                       // referencia_pago_id (must be unique)
