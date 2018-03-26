@@ -18,12 +18,13 @@ public class InsertService {
   
   private static final Logger logger = LoggerFactory.getLogger(InsertService.class);
 
-  protected final int bulkSize = 10000;
+  protected final int bulkSize = 500000;
+  
   @Autowired
   protected DataSource dataSource;
   @Autowired
   ApplicationContext applicationContext;
-
+  
   public void importData(List<BaseEntity> data) throws Exception {};
 
 

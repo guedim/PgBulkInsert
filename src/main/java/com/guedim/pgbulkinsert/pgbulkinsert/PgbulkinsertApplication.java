@@ -5,6 +5,8 @@ import static java.lang.System.exit;
 import java.io.File;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,10 @@ public class PgbulkinsertApplication implements CommandLineRunner {
   @Autowired
   private InsertService insertService;
   
+  @Autowired
+  protected DataSource dataSource;
+  
+  
   public static void main(String[] args) {
     SpringApplication.run(PgbulkinsertApplication.class, args);
   }
@@ -48,14 +54,18 @@ public class PgbulkinsertApplication implements CommandLineRunner {
       exit(1);
     } 
 
+    // Validate database conection
+    dataSource.getConnection();
     
     logger.info("Starting processing file...");
     FileCellProcessor fileProcessor = FileCellProcessor.getFileCellProcessor(entity);
     List<BaseEntity> data = fileProcessor.readWithCsvBeanReader(file.getAbsolutePath());
+    logger.info("Fiished processing file...");
     
     logger.info("Starting copy data into database...");
     InsertService service =  insertService.getInsertService(entity);
     service.importData(data);
+    logger.info("Finished copy data into database...");
     
     logger.info("Completed processing...");
     exit(0);
