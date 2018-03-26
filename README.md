@@ -3,6 +3,9 @@
 Project base on [PgBulkInsert tool](https://github.com/bytefish/PgBulkInsert).
 More information in [PgBulkInsert bulk processor](https://bytefish.de/blog/pgbulkinsert_bulkprocessor/)
 
+![Landoop - ElasticSearch](https://github.com/guedim/postgres-kafka-elastic/blob/master/resources/images/landoop-es.png "Landoop - ElasticSearch")
+
+
 ## Build
 - Download the [Project](https://github.com/guedim/PgBulkInsert) 
 ```sh
