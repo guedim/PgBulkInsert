@@ -8,6 +8,7 @@ import org.supercsv.cellprocessor.Optional;
 import org.supercsv.cellprocessor.ParseInt;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.exception.SuperCsvConstraintViolationException;
 import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
@@ -36,6 +37,8 @@ public final class ExtraParameterFileProcessor extends FileCellProcessor {
         extraParameterList.add(extraParameter);
       }
 
+    } catch (Exception e) {
+      logger.error("error validando archivo extra parametro:" +  ((SuperCsvConstraintViolationException)e).getCsvContext());
     } finally {
       if (beanReader != null) {
         beanReader.close();

@@ -9,6 +9,7 @@ import org.supercsv.cellprocessor.ParseEnum;
 import org.supercsv.cellprocessor.ParseInt;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
+import org.supercsv.exception.SuperCsvConstraintViolationException;
 import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
@@ -40,7 +41,9 @@ public final class AdditionalValueFileProcessor extends FileCellProcessor {
         additionalValueList.add(additionalValue);
       }
 
-    } finally {
+    } catch (Exception e) {
+      logger.error("error validando archivo additional value:" +  ((SuperCsvConstraintViolationException)e).getCsvContext());
+    }  {
       if (beanReader != null) {
         beanReader.close();
       }

@@ -13,6 +13,7 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.cellprocessor.time.ParseLocalDateTime;
+import org.supercsv.exception.SuperCsvConstraintViolationException;
 import org.supercsv.io.CsvBeanReader;
 import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.prefs.CsvPreference;
@@ -47,7 +48,10 @@ public final class PaymentReferenceFileProcessor extends FileCellProcessor {
         paymentReferenceList.add(paymentReference);
       }
 
-    } finally {
+    } catch (Exception e) {
+      logger.error("error validando archivo referencia pago:" +  ((SuperCsvConstraintViolationException)e).getCsvContext());
+    } 
+    finally {
       if (beanReader != null) {
         beanReader.close();
       }

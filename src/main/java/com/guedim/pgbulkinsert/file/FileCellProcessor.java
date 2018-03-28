@@ -11,7 +11,7 @@ import com.guedim.pgbulkinsert.pgbulkinsert.model.BaseEntity;
 
 public class FileCellProcessor {
   
-  private static final Logger logger = LoggerFactory.getLogger(FileCellProcessor.class);
+  protected static final Logger logger = LoggerFactory.getLogger(FileCellProcessor.class);
 
   private final int logRowNumber = 100000;
   
