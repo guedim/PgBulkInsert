@@ -3,6 +3,9 @@
 Project base on [PgBulkInsert tool](https://github.com/bytefish/PgBulkInsert).
 More information in [PgBulkInsert bulk processor](https://bytefish.de/blog/pgbulkinsert_bulkprocessor/)
 
+![PgBuklInsert](https://github.com/guedim/PgBulkInsert/blob/master/resources/CuponesDM.png "Insert Files")
+
+
 ## Build
 - Download the [Project](https://github.com/guedim/PgBulkInsert) 
 ```sh
@@ -55,8 +58,9 @@ $ java -Dfile.encoding=UTF-8 -jar target/pgbulkinsert-1.0.0.jar ADDITIONAL_VALUE
 
 Set the database user, pass and url by command line
 
+```sh
 java -Xms8g -Xmx8g -Dfile.encoding=UTF-8 -Dspring.datasource.url=jdbc:postgresql://localhost:5433/pol_v4 -Dspring.datasource.username=pol_v4 -Dspring.datasource.password=12345678 -jar target\pgbulkinsert-1.0.0.jar PAYMENT_REFERENCE   "C:\Users\SONY\Downloads\prueba-2018-03-22\referencia_pago_3_4.csv"
-
+```
 
 Read big csv files:
 http://www.baeldung.com/java-read-lines-large-file
