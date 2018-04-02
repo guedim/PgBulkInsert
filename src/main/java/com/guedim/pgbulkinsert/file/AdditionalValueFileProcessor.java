@@ -48,8 +48,10 @@ public final class AdditionalValueFileProcessor extends FileCellProcessor {
         additionalValueList.add(additionalValue);
       }
 
+    } catch (SuperCsvConstraintViolationException e) {
+      logger.error("error validando archivo additional value:" +  e.getCsvContext());
     } catch (Exception e) {
-      logger.error("error validando archivo additional value:" +  ((SuperCsvConstraintViolationException)e).getCsvContext());
+      logger.error("error validando archivo additional value:" + e.getMessage());
     }  {
       if (beanReader != null) {
         beanReader.close();

@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 public class CleanTextExample {
 
   public static void main(String[] args) throws IOException {
-    File file =  new File("C:\\Users\\SONY\\Downloads\\dm-2018-04-03\\referencia_pago_1_2_wide_1.csv");
-    Path path = Paths.get("C:\\Users\\SONY\\Downloads\\dm-2018-04-03\\referencia_pago_1_2_wide_1_fix.csv");
+    File file =  new File("C:\\Users\\SONY\\Downloads\\dm-2018-04-03\\referencia_pago_utf8\\referencia_pago_parametro_extra_1_2_wide_01.csv");
+    Path path = Paths.get("C:\\Users\\SONY\\Downloads\\dm-2018-04-03\\referencia_pago_utf8\\referencia_pago_parametro_extra_1_2_wide_01_fix.csv");
     
     String uncleanContent = readFileIntoString(file);
     //System.out.println(uncleanContent);

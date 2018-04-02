@@ -1,9 +1,6 @@
 package com.guedim.pgbulkinsert.file;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +23,11 @@ public final class ExtraParameterFileProcessor extends FileCellProcessor {
     List<BaseEntity> extraParameterList = null;
     ICsvBeanReader beanReader = null;
     try {
-      File fileDir = new File(file);
-      BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
-      CsvPreference cp = new CsvPreference.Builder(',', ';', "\n").build();
-
-      beanReader = new CsvBeanReader(in, cp);
+      beanReader = new CsvBeanReader(new FileReader(file), CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
+      //File fileDir = new File(file);
+      //BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
+      //CsvPreference cp = new CsvPreference.Builder(',', ';', "\n").build();
+      //beanReader = new CsvBeanReader(in, cp);
 
 
       // the header elements are used to map the values to the bean (names must match)
@@ -45,8 +42,10 @@ public final class ExtraParameterFileProcessor extends FileCellProcessor {
         extraParameterList.add(extraParameter);
       }
 
+    } catch (SuperCsvConstraintViolationException e) {
+      logger.error("error validando archivo extra parametro:" +  e.getCsvContext());
     } catch (Exception e) {
-      logger.error("error validando archivo extra parametro:" +  ((SuperCsvConstraintViolationException)e).getCsvContext());
+      logger.error("error validando archivo extra parametro:" +  e.getMessage());
     } finally {
       if (beanReader != null) {
         beanReader.close();
