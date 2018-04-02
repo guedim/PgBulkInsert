@@ -1,6 +1,9 @@
 package com.guedim.pgbulkinsert.file;
 
-import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +30,12 @@ public final class AdditionalValueFileProcessor extends FileCellProcessor {
     List<BaseEntity> additionalValueList = null;
     ICsvBeanReader beanReader = null;
     try {
-      beanReader = new CsvBeanReader(new FileReader(file), CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
+      File fileDir = new File(file);
+      BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
+      CsvPreference cp = new CsvPreference.Builder(',', ';', "\n").build();
 
+      beanReader = new CsvBeanReader(in, cp);
+      
       // the header elements are used to map the values to the bean (names must match)
       beanReader.getHeader(false);
       final String[] header = getHeaders();
