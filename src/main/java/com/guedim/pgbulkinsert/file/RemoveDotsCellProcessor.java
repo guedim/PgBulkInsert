@@ -23,6 +23,7 @@ public class RemoveDotsCellProcessor extends CellProcessorAdaptor {
     String valueStr = String.valueOf(value);
     valueStr = valueStr.replace(",", "");
     valueStr = valueStr.replace(".", "");
+    valueStr = valueStr.replace(";", "");
     return next.execute(valueStr, context);
   }
 
